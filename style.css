@@ -1,0 +1,511 @@
+/* 전체 페이지 기본 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: Pretendard, sans-serif;
+  background-color: #121212; /* 배경색 */
+}
+
+/* 최상단 이미지 영역 */
+.header {
+  width: 100vw;
+  height: 30vw;
+  max-width: 1920px;
+  background: url('img/main.png') lightgray 50% / cover no-repeat;
+  margin: 0 auto;
+  position: relative;
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #FFF;
+  font-size: 40px;
+  line-height: 1.3;
+}
+
+.center-text .light {
+  font-weight: 200;
+}
+
+.center-text .bold {
+  font-weight: 700;
+}
+
+/* 드롭다운 영역 */
+.dropdown {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  background: url('img/dropdownBG.png') no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.content-wrapper {
+  display: flex; /* 수평 레이아웃 */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px; /* 최대 너비 */
+  margin: 0 auto;
+  padding: 28px;
+}
+
+/* 왼쪽 콘텐츠 (텍스트 부분) */
+.left-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 챕터 스타일 */
+.chapter {
+  display: inline-flex;
+  width: 110px;
+  padding: 6px 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background: #FBE84E;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* 타이틀 스타일 */
+.title {
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* 드롭다운 아이콘 */
+.icon-container {
+  display: flex; /* 아이콘을 수평 정렬 */
+  align-items: center;
+  gap: 10px; /* 아이콘과 텍스트 간격 */
+}
+
+.icon-container .dropdown-icon {
+  transition: transform 0.3s ease;
+  width: 20px;
+  height: 20px;
+}
+
+/* 드롭다운 콘텐츠 */
+.dropdown-content {
+    max-height: 0; /* 초기 상태에서 높이를 0으로 설정 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨기기 */
+    background-color: #121212;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6em;
+    transition: max-height 0.3s ease; /* 높이 변경에 애니메이션 추가 */
+  }
+
+.dropdown.active .dropdown-content {
+  max-height: 500px; /* 활성화 시 최대 높이 */
+}
+
+.dropdown-content .content-wrapper {
+  display: block; /* 드롭다운 콘텐츠는 강제로 블록 레이아웃 */
+  padding: 20px;
+}
+
+.dropdown-content .content-wrapper p {
+  display: block; /* 문단을 블록 요소로 설정 */
+  margin-bottom: 16px; /* 문단 사이 여백 */
+}
+
+.dropdown-content .content-wrapper p:last-child {
+  margin-bottom: 0;
+}
+
+/* 강조된 텍스트 박스 */
+.highlight-box {
+  display: block;
+  width: 100%;
+  height: 6px;
+  margin: 50px 0;
+  padding: 8px 0px;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.highlight-text {
+  position: relative;
+  color: #FFF; /* 강조된 텍스트 색상 */
+  font-size: 22px;
+  font-weight: bold;
+  display: inline; /* 텍스트만 표시 */
+}
+
+.highlight-text::after {
+  content: ""; /* 가상 요소 생성 */
+  position: absolute; /* 절대 위치 설정 */
+  bottom: -4px; /* 텍스트 아래 여백 */
+  left: 0; /* 시작점 */
+  width: 100%; /* 텍스트 너비만큼 밑줄 */
+  height: 6px; /* 밑줄 두께 */
+  background-color: #FBE84E; /* 밑줄 색상 */
+  opacity: 80%;
+  border-radius: 3px; /* 밑줄 모서리 둥글게 */
+}
+
+/* 이미지 컨테이너 */
+.image-container {
+  text-align: center; /* 이미지 중앙 정렬 */
+  margin: 30px 0;
+}
+
+.image-container img {
+  width: 80%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.image-caption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #AAA;
+  font-style: italic;
+}
+
+/* 모든 요소 블록 레벨 설정 */
+.content-section, .text-container, .image-container {
+  display: block; /* 블록 레이아웃 설정 */
+  margin: 20px 0;
+}
+
+/* 타이핑 효과 */
+.typing-effect {
+  white-space: nowrap; /* 줄바꿈 방지 */
+  overflow: hidden; /* 텍스트 잘리게 */
+  border-right: 2px solid #FFF; /* 타이핑 커서 */
+  animation: typing 2s steps(20) 1s 1 normal both, blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* TOP 버튼 스타일 */
+.top-button {
+  position: fixed; /* 화면에 고정 */
+  bottom: 20px; /* 화면 하단에서 20px 위 */
+  right: 20px; /* 화면 우측에서 20px 왼쪽 */
+  padding: 10px 20px; /* 버튼 내부 여백 */
+  background-color: #121212; /* 배경색 */
+  color: #FFFFFF; /* 글씨색 */
+  font-size: 14px; /* 글씨 크기 */
+  font-weight: bold; /* 굵은 글씨 */
+  border: none; /* 테두리 없음 */
+  border-radius: 50px; /* 둥근 버튼 */
+  cursor: pointer; /* 클릭 가능 포인터 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* 약간의 그림자 */
+  z-index: 1000; /* 다른 요소 위에 표시 */
+  transition: opacity 0.3s ease; /* 부드러운 표시 전환 */
+  opacity: 0; /* 초기 상태에서 숨김 */
+}
+
+.top-button.show {
+  opacity: 1; /* 스크롤 시 나타남 */
+}
+
+.top-button:hover {
+  background-color: #FFFFFF; /* 호버 시 배경색 변경 */
+  color: #121212; /* 호버 시 글씨색 변경 */
+}
+
+/* 이미지 비교 섹션 */
+.image-comparison {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.comparison-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.comparison-image {
+  position: relative;
+  width: 260px;
+  text-align: center;
+  z-index: 1;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.comparison-image.hidden-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.comparison-image.hidden-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.comparison-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 버튼 스타일 */
+.control-button {
+  position: absolute;
+  top: 50%; /* 세로 중앙에 배치 */
+  transform: translateY(-50%);
+  background-color: rgba(18, 18, 18, 0.9); /* 어두운 배경 */
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* 그림자 추가 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: background-color 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+}
+
+.control-button:hover {
+  background-color: #fbe84e; /* 호버 시 배경색 변경 */
+}
+
+.control-button img {
+  width: 20px;
+  height: 20px;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.control-button:hover img {
+  filter: invert(1); /* 색상 반전 */
+}
+
+#prevButton {
+  left: 460px;
+}
+
+#prevButton img {
+  transform: rotate(-90deg); /* 왼쪽 방향: 90도 회전 */
+}
+
+#nextButton {
+  right: 460px;
+}
+
+#nextButton img {
+  transform: rotate(90deg); /* 오른쪽 방향: -90도 회전 */
+}
+
+.travel-insurance-box {
+  display: flex;
+  width: 430px;
+  height: 44px;
+  padding: 9px 9px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  border-radius: 40px;
+  background: #303030;
+  margin: auto; /* 부모로부터 중앙 정렬 */
+  margin-top: 60px; /* 위쪽 여백을 40px 추가 */
+}
+
+.travel-insurance-text {
+  width: 200px;
+  flex-shrink: 0;
+  align-self: stretch;
+  color: rgba(255, 255, 255, 0.80);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: -0.24px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 118px;
+  margin-top: 20px;
+}
+
+.logo-container img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* 버튼과 컨텐츠 영역을 감싸는 컨테이너 */
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+   /* 컨테이너 아래 여백 추가 (챕터3과의 간격) */
+   margin-top: 60px;
+   margin-bottom: 60px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 0;
+}
+
+.button {
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 24px 24px 0 0;
+}
+
+/* 표절 버튼 활성화 상태 */
+.button.active {
+  background-color: #FFE94A; 
+  color: #000000;
+}
+
+/* 표절이 아니다 버튼 활성화 상태 */
+#btn-not-plagiarism.active {
+  background-color: #2563EB; 
+  color: #FFFFFF;
+}
+
+.button:not(.active) {
+  background-color: #1A1A1A;
+  color: #575757;
+}
+
+#content {
+  padding: 32px;
+  transition: all 0.3s ease;
+  border-radius: 0 0 24px 24px;
+}
+
+#content3 {
+  padding: 32px;
+  transition: all 0.3s ease;
+  border-radius: 0 0 24px 24px;
+}
+
+/* 표절/표절이 아니다 컨텐츠 배경색 */
+#content.yellow-bg {
+  background-color: #FFE94A; /* 노란색 배경 */
+  color: #000000;
+}
+
+#content.blue-bg {
+  background-color: #2563EB; /* 파란색 배경 */
+  color: #FFFFFF;
+}
+
+/*chapter3 버튼 */
+/* 표절 버튼 활성화 상태 */
+.button.active3 {
+  background-color: #257179; 
+  color: #ffffff;
+}
+
+/* 표절이 아니다 버튼 활성화 상태 */
+#btn-not-plagiarism3.active3 {
+  background-color: #DCDCDC; 
+  color: #111111;
+}
+
+/* 표절/표절이 아니다 컨텐츠 배경색 */
+#content3.green-bg {
+  background-color: #257179; /* 초록 배경 */
+  color: #ffffff;
+}
+
+#content3.gray-bg {
+  background-color: #DCDCDC; /* 회색 배경 */
+  color: #111111;
+}
+
+/* 로고 섹션 */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin: 20px auto;
+}
+
+.logo-container img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+
+#prevButton3 {
+  left: 460px;
+}
+
+#prevButton3 img {
+  transform: rotate(-90deg); /* 왼쪽 방향: 90도 회전 */
+}
+
+#nextButton3 {
+  right: 460px;
+}
+
+#nextButton3 img {
+  transform: rotate(90deg); /* 오른쪽 방향: -90도 회전 */
+}
+
+.footer {
+  background-color: #121212; /* 푸터 배경색 */
+  color: rgba(131, 131, 131, 0.8); /* 텍스트 색상 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  padding: 20px 0; /* 위아래 여백 */
+  font-size: 14px; /* 글씨 크기 */
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* 위쪽 구분선 */
+}
+
